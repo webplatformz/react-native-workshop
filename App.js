@@ -3,6 +3,18 @@ import { Button, Dimensions, Image, StyleSheet, TextInput, View } from 'react-na
 import getAnswer from './src/service/YesOrNoApi'
 
 export default function App() {
+    /*
+        1. Extract <View>...</View> to ./src/components/Oracle
+            Hints:
+            * export default function Oracle() { return ... }
+            * Move giveAnswer and styles
+            * return <Oracle /> from App
+        2. Add props.image to Oracle component
+            Hints:
+            * Oracle(props) {...}
+            * https://facebook.github.io/react-native/docs/props
+                Caution: Our components are functions, not classes --> retrieve props as function parameter
+     */
     return (
         <View style={styles.container}>
             <TextInput
