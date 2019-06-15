@@ -1,10 +1,6 @@
 import React from 'react';
 import { Button, Dimensions, Image, StyleSheet, TextInput, View } from 'react-native';
 
-let giveAnswer = () => {
-    alert(`Uhmmm... well... maybe!`)
-}
-
 export default function App() {
     return (
         <View style={styles.container}>
@@ -22,6 +18,10 @@ export default function App() {
             />
         </View>
     );
+}
+
+let giveAnswer = () => {
+    alert(`Uhmmm... well... maybe!`)
 }
 
 const styles = StyleSheet.create({
