@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Dimensions, Image, StyleSheet, TextInput, View } from 'react-native';
-import getAnswer from './src/service/YesOrNoApi'
+import getAnswer from './src/service/YesOrNoService'
 
 export default function App() {
     return (
@@ -21,9 +21,13 @@ export default function App() {
     );
 }
 
-let giveAnswer = async () => {
-    const answer = await getAnswer();
-    alert(answer.answer)
+/*
+    3. Get answer using YesOrNoService
+    4. alert answer (Hint: See https://yesno.wtf/api/ for JSON structure
+    5. Make giveAnswer async to await service response
+*/
+let giveAnswer = () => {
+    alert(`Uhmmm... well... maybe!`)
 }
 
 const styles = StyleSheet.create({
