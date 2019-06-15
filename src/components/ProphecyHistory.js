@@ -7,21 +7,28 @@ export default class ProphecyHistory extends React.Component {
     constructor() {
         super()
         this.state = {
-            prophecy: {},
+            prophecy: null,
         }
     }
 
     render() {
+        let history;
+        if (this.state.prophecy) {
+            history = (
+                <View style={[styles.prophecy, getBackgroundColor(this.state.prophecy.answer)]}>
+                    <Text style={styles.question}>{this.state.prophecy.question}</Text>
+                    <Text>{this.state.prophecy.answer}</Text>
+                </View>
+            )
+        }
+
         return (
             <View>
                 <Button
                     title='Refresh History'
                     onPress={this.refreshHistory}
                 />
-                <View style={[styles.prophecy, getBackgroundColor(this.state.prophecy.answer)]}>
-                    <Text style={styles.question}>{this.state.prophecy.question}</Text>
-                    <Text>{this.state.prophecy.answer}</Text>
-                </View>
+                {history}
             </View>
         );
     }

@@ -1,11 +1,10 @@
-import {AsyncStorage} from 'react-native';
-
 const STORAGE_KEY = '@Oracle:prophecy';
 
 export const persistProphecy = async (question, answer) => {
     try {
         let prophecyJson = JSON.stringify({"question": question, "answer": answer});
-        await AsyncStorage.setItem(STORAGE_KEY, prophecyJson);
+        // 1. Persist prophecy using AsyncStorage (https://facebook.github.io/react-native/docs/asyncstorage)
+
         console.info(`Persisted ${prophecyJson}`)
     } catch (error) {
         console.error(error);
@@ -14,7 +13,8 @@ export const persistProphecy = async (question, answer) => {
 
 export const retrieveProphecy = async () => {
     try {
-        const prophecyJson = await AsyncStorage.getItem(STORAGE_KEY);
+        // 2. Retrieve persisted prophecy using AsyncStorage (https://facebook.github.io/react-native/docs/asyncstorage)
+        const prophecyJson = null;
         if (prophecyJson == null) {
             return null;
         }
