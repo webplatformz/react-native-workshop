@@ -40,6 +40,7 @@ let giveAnswer = async () => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: 'lightblue',
         alignItems: 'center',
     },
@@ -56,7 +57,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height / 4,
         resizeMode: 'contain',
+        marginTop: 50,
     }
 });
