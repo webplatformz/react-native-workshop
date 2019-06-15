@@ -14,3 +14,15 @@ npm i # Install project dependencies
 expo start # Start Expo Dev Server
 ```
 To run your app on your smartphone connect using Expo app. Caution: Disconnect from VPN ;-)
+
+## Exercises
+1. Components and Styling
+2. API Service
+3. Create Component with Props
+4. Add State
+5. Persist Data using React Native API
+
+You can jump to exercise by checking out the respective branch. Each exercise has an exercise and a solution branch.
+E.g. Components and styling:
+* 1-components-and-styling/exercise
+* 1-components-and-styling/solution
