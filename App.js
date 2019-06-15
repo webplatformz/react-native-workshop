@@ -1,13 +1,25 @@
 import React from 'react';
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import { Button, Dimensions, Image, StyleSheet, TextInput, View } from 'react-native';
+
+let giveAnswer = () => {
+    alert(`Uhmmm... well... maybe!`)
+}
 
 export default function App() {
     return (
         <View style={styles.container}>
-          <Image
-              style={styles.image}
-              source={{uri: 'http://www.prognostik.com/wp-content/uploads/2015/10/prognostik_orakel_delphi_w.jpg'}}
-          />
+            <TextInput
+                style={styles.questionBox}
+                placeholder='Ask me...'
+            />
+            <Button
+                title='I want to know 🔮'
+                onPress={giveAnswer}
+            />
+            <Image
+                style={styles.image}
+                source={{uri: 'http://www.prognostik.com/wp-content/uploads/2015/10/prognostik_orakel_delphi_w.jpg'}}
+            />
         </View>
     );
 }
@@ -15,6 +27,18 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'lightblue',
+        alignItems: 'center',
+    },
+    questionBox: {
+        backgroundColor: 'white',
+        marginTop: 50,
+        width: Dimensions.get('window').width - 40,
+        height: 50,
+
+        padding: 10,
+        fontSize: 18,
+
+        marginBottom: 20,
     },
     image: {
         width: Dimensions.get('window').width,
