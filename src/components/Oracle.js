@@ -1,7 +1,6 @@
 import {Alert, Button, Dimensions, Image, Platform, StyleSheet, TextInput, ToastAndroid, View} from "react-native";
 import React from 'react';
 import getAnswer from "../service/YesOrNoApi";
-import displayMessage from '../api/Alert';
 
 export default class Oracle extends React.Component {
     constructor(props) {
@@ -49,7 +48,18 @@ export default class Oracle extends React.Component {
     giveAnswer = async () => {
         const answer = await getAnswer();
         this.setState({ answer: answer.answer, image: answer.image });
-        displayMessage(answer.answer, this.state.question);
+        this.displayAlert(answer.answer, this.state.question);
+    }
+
+    displayAlert = (answer) => {
+        /*
+            1. Show platform-specific alert (https://facebook.github.io/react-native/docs/platform-specific-code#platform-module)
+            2. Extract alert to ../api/Alert using platform-specific file extensions (https://facebook.github.io/react-native/docs/platform-specific-code#platform-specific-extensions)
+         */
+
+        // ToastAndroid.show(answer, ToastAndroid.LONG);
+        // Alert.alert(this.state.question, answer);
+        // alert(answer);
     }
 }
 
