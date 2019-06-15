@@ -21,13 +21,14 @@ export default function Oracle(props) {
     );
 }
 
-let giveAnswer = async () => {
+const giveAnswer = async () => {
     const answer = await getAnswer();
     alert(answer.answer)
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: 'lightblue',
         alignItems: 'center',
     },
@@ -44,7 +45,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height / 4,
         resizeMode: 'contain',
+        marginTop: 50,
     }
 });
