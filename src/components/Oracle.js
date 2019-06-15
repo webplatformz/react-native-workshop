@@ -1,12 +1,15 @@
 import {Button, Dimensions, Image, StyleSheet, TextInput, View} from "react-native";
 import React from "react";
 import getAnswer from "../service/YesOrNoApi";
+import {persistProphecy} from "../service/InternalStorage";
+import getBackgroundColor from './utils/AnswerColorMapper';
 
 export default class Oracle extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            question: '',
             answer: '',
             image: props.image,
         };
@@ -14,10 +17,12 @@ export default class Oracle extends React.Component {
 
     render() {
         return (
-            <View style={[styles.container, this.getBackgroundColor()]}>
+            <View style={[styles.container, getBackgroundColor(this.state.answer)]}>
                 <TextInput
                     style={styles.questionBox}
                     placeholder='Ask me...'
+                    value={this.state.question}
+                    onChangeText={(text) => this.setState({ question: text })}
                 />
                 <Button
                     title='I want to know 🔮'
@@ -31,20 +36,10 @@ export default class Oracle extends React.Component {
         );
     }
 
-    getBackgroundColor = () => {
-        const BACKGROUND_MAPPINGS = {
-            'yes': 'mediumaquamarine',
-            'no': 'lightcoral',
-            'maybe': 'khaki',
-            '': 'lightblue',
-        };
-
-        return { backgroundColor: BACKGROUND_MAPPINGS[this.state.answer] };
-    }
-
     giveAnswer = async () => {
         const answer = await getAnswer();
         this.setState({ answer: answer.answer, image: answer.image });
+        await persistProphecy(this.state.question, answer.answer);
     }
 }
 
