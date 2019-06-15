@@ -50,6 +50,7 @@ export default class Oracle extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         alignItems: 'center',
     },
     questionBox: {
@@ -65,7 +66,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height / 4,
         resizeMode: 'contain',
+        marginTop: 50,
     }
 });
