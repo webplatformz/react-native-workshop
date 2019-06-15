@@ -2,50 +2,37 @@ import {Button, Dimensions, Image, StyleSheet, TextInput, View} from "react-nati
 import React from "react";
 import getAnswer from "../service/YesOrNoApi";
 
-export default class Oracle extends React.Component {
-    constructor(props) {
-        super(props);
+/*
+    1. Convert Oracle functional component to class component
+        Hints: https://reactjs.org/docs/state-and-lifecycle.html#converting-a-function-to-a-class
+    2. Add state to change background and image based on answer
+        Hints:
+        * https://reactjs.org/docs/state-and-lifecycle.html#adding-local-state-to-a-class
+        * Set state.image in constructor()
+        * setState({ answer: ..., image: ... } in giveAnswer()
+ */
+export default function Oracle(props) {
+    return (
+        <View style={styles.container}>
+            <TextInput
+                style={styles.questionBox}
+                placeholder='Ask me...'
+            />
+            <Button
+                title='I want to know 🔮'
+                onPress={giveAnswer}
+            />
+            <Image
+                style={styles.image}
+                source={{uri: props.image}}
+            />
+        </View>
+    );
+}
 
-        this.state = {
-            answer: '',
-            image: props.image,
-        };
-    }
-
-    render() {
-        return (
-            <View style={[styles.container, this.getBackgroundColor()]}>
-                <TextInput
-                    style={styles.questionBox}
-                    placeholder='Ask me...'
-                />
-                <Button
-                    title='I want to know 🔮'
-                    onPress={this.giveAnswer}
-                />
-                <Image
-                    style={styles.image}
-                    source={{uri: this.state.image}}
-                />
-            </View>
-        );
-    }
-
-    getBackgroundColor = () => {
-        const BACKGROUND_MAPPINGS = {
-            'yes': 'mediumaquamarine',
-            'no': 'lightcoral',
-            'maybe': 'khaki',
-            '': 'lightblue',
-        };
-
-        return { backgroundColor: BACKGROUND_MAPPINGS[this.state.answer] };
-    }
-
-    giveAnswer = async () => {
-        const answer = await getAnswer();
-        this.setState({answer: answer.answer, image: answer.image });
-    }
+const giveAnswer = async () => {
+    const answer = await getAnswer();
+    this.setState({answer: answer.answer, image: answer.image });
 }
 
 const styles = StyleSheet.create({
