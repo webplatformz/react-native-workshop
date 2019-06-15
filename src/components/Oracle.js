@@ -1,8 +1,9 @@
-import {Button, Dimensions, Image, StyleSheet, TextInput, View} from "react-native";
-import React from "react";
+import {Alert, Button, Dimensions, Image, Platform, StyleSheet, TextInput, ToastAndroid, View} from "react-native";
+import React from 'react';
 import getAnswer from "../service/YesOrNoApi";
 import {persistProphecy} from "../service/InternalStorage";
 import getBackgroundColor from './utils/AnswerColorMapper';
+import displayMessage from '../api/Alert';
 
 export default class Oracle extends React.Component {
     constructor(props) {
@@ -40,6 +41,7 @@ export default class Oracle extends React.Component {
         const answer = await getAnswer();
         this.setState({ answer: answer.answer, image: answer.image });
         await persistProphecy(this.state.question, answer.answer);
+        displayMessage(answer.answer, this.state.question);
     }
 }
 
