@@ -2,28 +2,50 @@ import {Button, Dimensions, Image, StyleSheet, TextInput, View} from "react-nati
 import React from "react";
 import getAnswer from "../service/YesOrNoApi";
 
-export default function Oracle(props) {
-    return (
-        <View style={styles.container}>
-            <TextInput
-                style={styles.questionBox}
-                placeholder='Ask me...'
-            />
-            <Button
-                title='I want to know 🔮'
-                onPress={giveAnswer}
-            />
-            <Image
-                style={styles.image}
-                source={{uri: props.image}}
-            />
-        </View>
-    );
-}
+export default class Oracle extends React.Component {
+    constructor(props) {
+        super(props);
 
-let giveAnswer = async () => {
-    const answer = await getAnswer();
-    alert(answer.answer)
+        this.state = {
+            answer: '',
+            image: props.image,
+        };
+    }
+
+    render() {
+        return (
+            <View style={[styles.container, this.getBackgroundColor()]}>
+                <TextInput
+                    style={styles.questionBox}
+                    placeholder='Ask me...'
+                />
+                <Button
+                    title='I want to know 🔮'
+                    onPress={this.giveAnswer}
+                />
+                <Image
+                    style={styles.image}
+                    source={{uri: this.state.image}}
+                />
+            </View>
+        );
+    }
+
+    getBackgroundColor = () => {
+        const BACKGROUND_MAPPINGS = {
+            'yes': 'mediumaquamarine',
+            'no': 'lightcoral',
+            'maybe': 'khaki',
+            '': 'lightblue',
+        };
+
+        return { backgroundColor: BACKGROUND_MAPPINGS[this.state.answer] };
+    }
+
+    giveAnswer = async () => {
+        const answer = await getAnswer();
+        this.setState({answer: answer.answer, image: answer.image });
+    }
 }
 
 const styles = StyleSheet.create({
