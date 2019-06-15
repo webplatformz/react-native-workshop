@@ -44,13 +44,12 @@ export default class Oracle extends React.Component {
 
     giveAnswer = async () => {
         const answer = await getAnswer();
-        this.setState({answer: answer.answer, image: answer.image });
+        this.setState({ answer: answer.answer, image: answer.image });
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'lightblue',
         alignItems: 'center',
     },
     questionBox: {
