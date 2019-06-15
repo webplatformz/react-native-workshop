@@ -1,7 +1,7 @@
 import {Alert, Button, Dimensions, Image, Platform, StyleSheet, TextInput, ToastAndroid, View} from "react-native";
-import React from "react";
+import React from 'react';
 import getAnswer from "../service/YesOrNoApi";
-import {} from "react-native";
+import displayMessage from '../api/Alert';
 
 export default class Oracle extends React.Component {
     constructor(props) {
@@ -49,17 +49,7 @@ export default class Oracle extends React.Component {
     giveAnswer = async () => {
         const answer = await getAnswer();
         this.setState({ answer: answer.answer, image: answer.image });
-        this.displayAlert(answer.answer);
-    }
-
-    displayAlert = (answer) => {
-        if (Platform.OS === 'android') {
-            ToastAndroid.show(answer, ToastAndroid.LONG);
-        } else if (Platform.OS === 'ios') {
-            Alert.alert(this.state.question, answer);
-        } else {
-            alert(answer);
-        }
+        displayMessage(answer.answer, this.state.question);
     }
 }
 
