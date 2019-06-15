@@ -11,6 +11,6 @@
 git clone https://github.com/webplatformz/react-native-workshop.git
 cd react-native-workshop
 npm i # Install project dependencies
-expo start # Start Expo DevTools
+expo start # Start Expo Dev Server
 ```
 To run your app on your smartphone connect using Expo app. Caution: Disconnect from VPN ;-)
