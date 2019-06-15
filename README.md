@@ -20,7 +20,8 @@ To run your app on your smartphone connect using Expo app. Caution: Disconnect f
 2. API Service
 3. Create Component with Props
 4. Add State
-5. Persist Data using React Native API
+5. Platform-specific Code
+6. Persist Data
 
 You can jump to exercise by checking out the respective branch. Each exercise has an exercise and a solution branch.
 E.g. Components and styling:
