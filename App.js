@@ -1,9 +1,6 @@
 import React from 'react';
 import { Button, Dimensions, Image, StyleSheet, TextInput, View } from 'react-native';
-
-let giveAnswer = () => {
-    alert(`Uhmmm... well... maybe!`)
-}
+import getAnswer from './src/service/YesOrNoApi'
 
 export default function App() {
     return (
@@ -22,6 +19,11 @@ export default function App() {
             />
         </View>
     );
+}
+
+let giveAnswer = async () => {
+    const answer = await getAnswer();
+    alert(answer.answer)
 }
 
 const styles = StyleSheet.create({
