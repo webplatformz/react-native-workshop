@@ -28,13 +28,15 @@ export default function App() {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: 'lightblue',
         alignItems: 'center',
     },
     // 3. Add style for questionBox (Hints: backgroundColor, marginTop, width, height, padding, fontSize)
     image: {
+        marginTop: 50,
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height / 4,
         resizeMode: 'contain',
     }
 });
