@@ -14,11 +14,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: 'lightblue',
     },
     image: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height / 4,
         resizeMode: 'contain',
+        marginTop: 50,
     }
 });
